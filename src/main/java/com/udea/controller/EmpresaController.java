@@ -12,7 +12,7 @@ public class EmpresaController {
     public String inicio(Model model){
         var empresa = new Empresa("UDEA","CALLE 72 A # 435","4849401","800106404");
         model.addAttribute("emp",empresa);
-        return "index";
+        return "verEmpresas";
     }
 }
 
