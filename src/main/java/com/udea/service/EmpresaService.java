@@ -4,6 +4,8 @@ import com.udea.models.Empresa;
 import com.udea.repo.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class EmpresaService {
         return empresaRepository.findById(id).get();
     }
 
-    public boolean saverOrUpdateEmpresa(Empresa empresa) {
+    public boolean saveOrUpdateEmpresa(Empresa empresa) {
         Empresa emp = empresaRepository.save(empresa);
         if (empresaRepository.findById(emp.getId()) != null) {
 
@@ -39,5 +41,6 @@ public class EmpresaService {
         }
         return true;
     }
+
 
 }

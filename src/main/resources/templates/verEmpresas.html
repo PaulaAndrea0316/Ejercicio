@@ -8,6 +8,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            a{
+                color:white;
+            }
+
+            a:hover{
+                color:black;
+                text-decoration:none;
+            }
+        </style>
     </head>
     <body>
         <h1>Lista de Empresas</h1><br>
@@ -30,16 +40,13 @@
                 <td th:text="${empresa.direccion}"></td>
                 <td th:text="${empresa.telefono}"></td>
                 <td th:text="${empresa.nit}"></td>
-                <td><button type="button" class="btn btn-warning"><a th:href="@{/editarEmpresa}">Editar</a></button></td>
-                <td><button type="button" class="btn btn-danger"><a th:href="@{/eliminarEmpresa}">Eliminar</a></button></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa}">Eliminar</a></button></td>
+
             </tr>
         </table>
-        </div>
 
-        <p th:text="${emp.getNombre()}"></p>
-        <p th:text="${emp.getDireccion()}"></p>
-        <p th:text="${emp.getTelefono()}"></p>
-        <p th:text="${emp.getNit()}"></p>
+        <button type  = "button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
 
     </body>
 </html>
