@@ -10,9 +10,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
+//Le decimos a Spring que esta clase es de servicios
 @Service
 public class EmpresaService {
-    @Autowired
+    @Autowired //Conectamos esta clase con el repository de Empresa
     EmpresaRepository empresaRepository;
 
     public List<Empresa> getAllEmpresas() {
@@ -20,11 +21,13 @@ public class EmpresaService {
         empresaRepository.findAll().forEach(empresa -> empresasList.add(empresa));
         return empresasList;
     }
-
+    //Metodo que me trae un objeto de tipo Empresa cuando cuento con el id de la misma
     public Empresa getEmpresaById(Integer id) {
         return empresaRepository.findById(id).get();
     }
 
+
+    //Metodo para guardar o actualizar objetos de tipo Empresa
     public boolean saveOrUpdateEmpresa(Empresa empresa) {
         Empresa emp = empresaRepository.save(empresa);
         if (empresaRepository.findById(emp.getId()) != null) {
@@ -33,7 +36,7 @@ public class EmpresaService {
         }
         return false;
     }
-
+    //Metodo para eliminar empresas registradas teniendo el id
     public boolean deleteEmpresa(Integer id) {
         empresaRepository.deleteById(id);
         if (getEmpresaById(id)!=null){
