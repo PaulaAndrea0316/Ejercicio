@@ -16,11 +16,13 @@ public class EmpresaService {
     @Autowired //Conectamos esta clase con el repository de Empresa
     EmpresaRepository empresaRepository;
 
+    //Metodo que retornará la lista de empresas usando metodos hererados del jpaRepository
     public List<Empresa> getAllEmpresas() {
         List<Empresa> empresasList = new ArrayList<>();
         empresaRepository.findAll().forEach(empresa -> empresasList.add(empresa));
         return empresasList;
     }
+
     //Metodo que me trae un objeto de tipo Empresa cuando cuento con el id de la misma
     public Empresa getEmpresaById(Integer id) {
         return empresaRepository.findById(id).get();
@@ -28,14 +30,11 @@ public class EmpresaService {
 
 
     //Metodo para guardar o actualizar objetos de tipo Empresa
-    public boolean saveOrUpdateEmpresa(Empresa empresa) {
+    public Empresa saveOrUpdateEmpresa(Empresa empresa) {
         Empresa emp = empresaRepository.save(empresa);
-        if (empresaRepository.findById(emp.getId()) != null) {
-
-            return true;
-        }
-        return false;
+        return emp;
     }
+
     //Metodo para eliminar empresas registradas teniendo el id
     public boolean deleteEmpresa(Integer id) {
         empresaRepository.deleteById(id); //Eliminar
