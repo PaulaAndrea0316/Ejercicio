@@ -3,7 +3,6 @@ package com.udea.models;
 import javax.persistence.*;
 @Entity
 @Table (name = "Empleado")
-
 public class Empleado {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -11,7 +10,7 @@ public class Empleado {
     private String nombre;
     private String correo;
     @ManyToOne
-    @JoinColumn(name="empresa id")
+    @JoinColumn(name="empresa_id")
     private Empresa empresa;
     private String rol;
 
