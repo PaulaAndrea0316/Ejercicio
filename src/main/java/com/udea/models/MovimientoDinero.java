@@ -3,7 +3,7 @@ package com.udea.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="MovimientoDinero")
+@Table(name ="Movimientos")
 
 public class MovimientoDinero {
     @Id
@@ -12,7 +12,7 @@ public class MovimientoDinero {
     private long monto;
     private String concepto;
     @ManyToOne
-    @JoinColumn(name = "empleado id")
+    @JoinColumn(name = "empleado_id")
     private Empleado usuario;
 
     public MovimientoDinero() {
