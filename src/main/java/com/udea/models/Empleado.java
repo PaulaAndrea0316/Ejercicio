@@ -6,12 +6,12 @@ import javax.persistence.*;
 
 public class Empleado {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private String correo;
     @ManyToOne
-    @JoinColumn(name="empresa id")
+    @JoinColumn(name="empresa_id")
     private Empresa empresa;
     private String rol;
 
