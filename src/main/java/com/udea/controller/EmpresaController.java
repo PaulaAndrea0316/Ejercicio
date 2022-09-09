@@ -3,6 +3,7 @@ package com.udea.controller;
 import com.udea.models.Empleado;
 import com.udea.models.Empresa;
 import com.udea.models.MovimientoDinero;
+import com.udea.repo.MovimientosRepository;
 import com.udea.service.EmpleadoService;
 import com.udea.service.EmpresaService;
 import com.udea.service.MovimientosService;
@@ -28,6 +29,9 @@ public class EmpresaController {
 
     @Autowired
     MovimientosService movimientosService;
+
+    @Autowired
+    MovimientosRepository movimientosRepositor;
 
     //EMPRESAS
     @GetMapping({"/","/VerEmpresas"})//Cambie el GeTmapping
@@ -160,6 +164,8 @@ public class EmpresaController {
         List<MovimientoDinero> listaMovimientos=movimientosService.getAllMovimientos();
         model.addAttribute("movlist",listaMovimientos);
         model.addAttribute("mensaje",mensaje);
+        Long sumaMonto=movimientosService.obtenerSumaMontos();
+        model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
         return "verMovimientos"; //Llamamos al HTML
     }
 
@@ -219,6 +225,8 @@ public class EmpresaController {
     public String movimientosPorEmpleado(@PathVariable("id")Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosService.obtenerPorEmpleado(id);
         model.addAttribute("movlist",movlist);
+        Long sumaMonto=movimientosService.MontosPorEmpleado(id);
+        model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos"; //Llamamos al HTML
     }
 
@@ -226,6 +234,8 @@ public class EmpresaController {
     public String movimientosPorEmpresa(@PathVariable("id")Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosService.obtenerPorEmpresa(id);
         model.addAttribute("movlist",movlist);
+        Long sumaMonto=movimientosService.MontosPorEmpresa(id);
+        model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos"; //Llamamos al HTML
     }
 
